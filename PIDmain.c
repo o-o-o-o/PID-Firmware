@@ -351,7 +351,7 @@ double Ierror(double PV, double SP){
     static double mult;
     static double integ;
     mult = (double)prescaler/8;
-    integ = ((Ki * (SP - PV)));
+    integ = (SP - PV);
 
         integral += (integ * mult);  //sample_freq * KI should be done only once
 
@@ -361,7 +361,7 @@ double Ierror(double PV, double SP){
         if (integral <= -1022){
             integral = -1022;
         }
-        return integral;
+        return (Ki*integral);
 }
 
 double Derror(double PV, double PVold){
